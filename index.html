@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Caleb Shin — Portfolio</title>
+  <title>Caleb Shin — My Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -17,561 +17,112 @@
       --muted:     #6b7280;
       --heading:   #f4f6ff;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    /* ── GRID OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(245,200,66,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(245,200,66,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 3rem;
-      background: rgba(10,12,15,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body.modal-open { overflow: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(245,200,66,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(245,200,66,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(30,30,30,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--accent); letter-spacing: 0.1em; text-decoration: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
-
-    /* ── HERO ── */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 4rem;
-      padding: 8rem 3rem 4rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      z-index: 1;
-    }
-
-    .hero-text { }
-
-    .hero-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.1s forwards;
-    }
-
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      color: var(--heading);
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.25s forwards;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-bio {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.4s forwards;
-    }
-
-    .hero-bio strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.55s forwards;
-    }
-
-    .btn {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.75rem 1.75rem;
-      border-radius: 2px;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #0a0c0f;
-      border: 1px solid var(--accent);
-      font-weight: 500;
-    }
-
-    .btn-primary:hover {
-      background: transparent;
-      color: var(--accent);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--border);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* ── PHOTO ── */
-    .hero-photo {
-      position: relative;
-      opacity: 0;
-      animation: fadeIn 1s 0.5s forwards;
-    }
-
-    .hero-photo::before {
-      content: '';
-      position: absolute;
-      inset: -12px;
-      border: 1px solid var(--accent2);
-      border-radius: 2px;
-      z-index: -1;
-    }
-
-    .hero-photo::after {
-      content: '';
-      position: absolute;
-      inset: -24px;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      z-index: -1;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      border-radius: 2px;
-      filter: grayscale(20%) contrast(1.05);
-      display: block;
-    }
-
-    /* Placeholder when no photo uploaded */
-    .photo-placeholder {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: var(--surface);
-      border: 1px dashed var(--border);
-      border-radius: 2px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      color: var(--muted);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-    }
-
-    .photo-placeholder svg {
-      opacity: 0.3;
-    }
-
-    /* ── STATS BAR ── */
-    .stats-bar {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-      display: flex;
-      justify-content: center;
-      gap: 0;
-    }
-
-    .stat {
-      padding: 2rem 4rem;
-      text-align: center;
-      border-right: 1px solid var(--border);
-    }
-
+    #hero { position: relative; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; padding: 8rem 3rem 4rem; max-width: 1200px; margin: 0 auto; z-index: 1; }
+    .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.1s forwards; }
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); color: var(--heading); line-height: 1.05; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.7s 0.25s forwards; }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-bio { font-size: 1.05rem; color: var(--muted); max-width: 480px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.7s 0.4s forwards; }
+    .hero-bio strong { color: var(--text); font-weight: 500; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 0.55s forwards; }
+    .btn { font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1.75rem; border-radius: 2px; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+    .btn-primary { background: var(--accent); color: #1e1e1e; border: 1px solid var(--accent); font-weight: 500; }
+    .btn-primary:hover { background: transparent; color: var(--accent); }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-photo { position: relative; opacity: 0; animation: fadeIn 1s 0.5s forwards; }
+    .hero-photo::before { content: ''; position: absolute; inset: -12px; border: 1px solid var(--accent2); border-radius: 2px; z-index: -1; }
+    .hero-photo::after { content: ''; position: absolute; inset: -24px; border: 1px solid var(--border); border-radius: 2px; z-index: -1; }
+    .hero-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 2px; filter: grayscale(20%) contrast(1.05); display: block; }
+    .photo-placeholder { width: 100%; aspect-ratio: 3/4; background: var(--surface); border: 1px dashed var(--border); border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 0.8rem; }
+    .photo-placeholder svg { opacity: 0.3; }
+    .stats-bar { position: relative; z-index: 1; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); display: flex; justify-content: center; }
+    .stat { padding: 2rem 4rem; text-align: center; border-right: 1px solid var(--border); }
     .stat:first-child { border-left: 1px solid var(--border); }
-
-    .stat-number {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.5rem;
-      color: var(--accent);
-      display: block;
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-top: 0.4rem;
-      display: block;
-    }
-
-    /* ── SECTION COMMON ── */
-    section {
-      position: relative;
-      z-index: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 6rem 3rem;
-    }
-
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      color: var(--heading);
-      line-height: 1.1;
-      margin-bottom: 3rem;
-    }
-
-    /* ── PROJECTS ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-
-    .project-card {
-      background: var(--bg);
-      padding: 0;
-      overflow: hidden;
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-
+    .stat-number { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--accent); display: block; line-height: 1; }
+    .stat-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.4rem; display: block; }
+    section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 6rem 3rem; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1rem; }
+    h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); color: var(--heading); line-height: 1.1; margin-bottom: 3rem; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .project-card { background: var(--bg); overflow: hidden; cursor: pointer; transition: background 0.3s; }
     .project-card:hover { background: var(--surface); }
-
-    .project-card:hover .project-image img {
-      transform: scale(1.04);
-      filter: grayscale(0%) contrast(1.05);
-    }
-
-    .project-image {
-      width: 100%;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      background: var(--surface);
-      position: relative;
-    }
-
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease, filter 0.5s ease;
-      filter: grayscale(30%) contrast(1.05);
-    }
-
-    /* Image placeholder */
-    .img-placeholder {
-      width: 100%;
-      height: 100%;
-      background: var(--surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      border-bottom: 1px solid var(--border);
-    }
-
+    .project-card:hover .project-image img { transform: scale(1.04); filter: grayscale(0%) contrast(1.05); }
+    .project-image { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); }
+    .project-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease, filter 0.5s ease; filter: grayscale(30%) contrast(1.05); }
+    .img-placeholder { width: 100%; height: 100%; background: var(--surface); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); border-bottom: 1px solid var(--border); }
     .project-body { padding: 1.75rem; }
+    .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid var(--accent2); color: var(--accent); border-radius: 1px; }
+    .project-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--heading); margin-bottom: 0.75rem; line-height: 1.2; }
+    .project-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+    .project-hint { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.08em; }
 
-    .project-tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
+    /* MODAL */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,10,0.85); backdrop-filter: blur(6px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal { background: var(--bg); border: 1px solid var(--border); max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; transform: translateY(24px); transition: transform 0.3s ease; }
+    .modal-backdrop.open .modal { transform: translateY(0); }
+    .modal-close { position: sticky; top: 0; display: flex; justify-content: flex-end; padding: 1rem 1.25rem 0; background: var(--bg); z-index: 10; }
+    .modal-close button { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); background: transparent; border: 1px solid var(--border); padding: 0.4rem 0.9rem; cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s, border-color 0.2s; }
+    .modal-close button:hover { color: var(--accent); border-color: var(--accent); }
+    .modal-hero-image { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; filter: grayscale(10%) contrast(1.05); }
+    .modal-hero-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--surface); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .modal-content { padding: 2rem 2.5rem 3rem; }
+    .modal-content .project-tags { margin-bottom: 1rem; }
+    .modal-content h3 { font-family: 'DM Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--heading); margin-bottom: 1.5rem; line-height: 1.1; }
+    .modal-content p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.25rem; }
+    .modal-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 2rem 0; }
+    .modal-gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: grayscale(20%); transition: filter 0.3s; }
+    .modal-gallery img:hover { filter: grayscale(0%); }
+    .modal-gallery-placeholder { width: 100%; aspect-ratio: 4/3; background: var(--surface); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+    .modal-link { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--accent); text-decoration: none; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 0.4rem; border: 1px solid var(--accent2); padding: 0.6rem 1.2rem; transition: background 0.2s, gap 0.2s; margin-top: 0.5rem; }
+    .modal-link:hover { background: var(--surface); gap: 0.7rem; }
 
-    .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
-      border: 1px solid var(--accent2);
-      color: var(--accent);
-      border-radius: 1px;
-    }
-
-    .project-card h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.35rem;
-      color: var(--heading);
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-    }
-
-    .project-card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1.25rem;
-    }
-
-    .project-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: gap 0.2s;
-    }
-
-    .project-link:hover { gap: 0.7rem; }
-
-    /* ── SKILLS ── */
     #skills { background: var(--surface); max-width: 100%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-    #skills > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
-
     .skills-inner { max-width: 1200px; margin: 0 auto; padding: 6rem 3rem; }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 3rem;
-    }
-
-    .skill-group {
-      background: var(--bg);
-      padding: 1.75rem;
-    }
-
-    .skill-group-title {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .skill-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .skill-list li {
-      font-size: 0.9rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .skill-list li::before {
-      content: '—';
-      color: var(--accent2);
-      font-family: 'DM Mono', monospace;
-    }
-
-    /* ── CONTACT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+    .skill-group { background: var(--bg); padding: 1.75rem; }
+    .skill-group-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
+    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .skill-list li { font-size: 0.9rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+    .skill-list li::before { content: '—'; color: var(--accent2); font-family: 'DM Mono', monospace; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .contact-text { font-size: 1rem; color: var(--muted); }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.25rem 1.5rem;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .contact-link:hover {
-      border-color: var(--accent);
-      background: var(--surface);
-    }
-
-    .contact-link-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      display: block;
-    }
-
-    .contact-link-value {
-      font-size: 0.95rem;
-      color: var(--text);
-      display: block;
-      margin-top: 0.15rem;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 2rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    footer span {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ── RESPONSIVE ── */
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; border: 1px solid var(--border); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .contact-link:hover { border-color: var(--accent); background: var(--surface); }
+    .contact-link-label { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; display: block; }
+    .contact-link-value { font-size: 0.95rem; color: var(--text); display: block; margin-top: 0.15rem; }
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+    footer span { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
-
-      #hero {
-        grid-template-columns: 1fr;
-        padding: 7rem 1.5rem 3rem;
-        gap: 3rem;
-      }
-
+      nav { padding: 1rem 1.5rem; } .nav-links { gap: 1.5rem; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 3rem; }
       .hero-photo { order: -1; max-width: 280px; margin: 0 auto; }
-
-      .stats-bar { flex-wrap: wrap; }
-      .stat { padding: 1.5rem 2rem; flex: 1 1 120px; }
-      .stat:first-child { border-left: none; }
-
-      section { padding: 4rem 1.5rem; }
-      .projects-grid { grid-template-columns: 1fr; }
+      .stats-bar { flex-wrap: wrap; } .stat { padding: 1.5rem 2rem; flex: 1 1 120px; } .stat:first-child { border-left: none; }
+      section { padding: 4rem 1.5rem; } .projects-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .modal-backdrop { padding: 0; align-items: flex-end; } .modal { max-height: 95vh; } .modal-content { padding: 1.5rem 1.5rem 2.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">CS / Portfolio</a>
     <ul class="nav-links">
@@ -581,7 +132,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <div id="hero">
     <div class="hero-text">
       <p class="hero-tag">Electrical Engineering · UC Santa Cruz</p>
@@ -596,147 +146,147 @@
         <a href="resume.pdf" class="btn btn-ghost" target="_blank">Resume ↗</a>
       </div>
     </div>
-
     <div class="hero-photo">
-      <img src="assets/photo.jpg" alt="Caleb Shin" />
+      <!-- Replace with: <img src="assets/photo.jpg" alt="Caleb Shin" /> -->
+      <div class="photo-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
     </div>
   </div>
 
-  <!-- STATS BAR -->
   <div class="stats-bar">
-    <div class="stat">
-      <span class="stat-number">3+</span>
-      <span class="stat-label">Active Projects</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">4</span>
-      <span class="stat-label">Past Projects</span>
-    </div>
-    <div class="stat">
-      <span class="stat-number">EE B.S. '28</span>
-      <span class="stat-label">UC Santa Cruz</span>
-    </div>
+    <div class="stat"><span class="stat-number">3</span><span class="stat-label">Active Projects</span></div>
+    <div class="stat"><span class="stat-number">4</span><span class="stat-label">Past Projects</span></div>
+    <div class="stat"><span class="stat-number">EE '28</span><span class="stat-label">UC Santa Cruz</span></div>
   </div>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <p class="section-label reveal">Selected Work</p>
     <h2 class="reveal">Projects &amp;<br>Research</h2>
-
     <div class="projects-grid">
 
-      <!-- PROJECT 1 -->
-      <div class="project-card reveal">
+      <!--
+        HOW PROJECTS WORK:
+        All content lives in data-* attributes on the card div.
+        The modal reads these automatically when you click the card.
+
+        data-title        — project name (shown in card + modal)
+        data-tags         — comma-separated tags
+        data-summary      — short text shown on the card
+        data-description  — longer text shown in the modal
+        data-image        — path to the main image (card + modal hero)
+        data-gallery      — comma-separated paths to extra images in the modal
+        data-link         — URL for the CTA button in the modal
+        data-link-label   — text for that button
+      -->
+
+      <div class="project-card reveal"
+        data-title="Automotive Steering &amp; Suspension Models"
+        data-tags="Python,Vehicle Dynamics,Simulation"
+        data-summary="A self-driven collection of multi-DOF physics models simulating suspension geometry, tire force generation, and steering dynamics."
+        data-description="A fully self-driven collection of multi-DOF physics and geometry models written in Python. The project covers suspension kinematics, steering geometry, and tire force modeling under high-acceleration conditions. All physics research was completed independently using primary sources and technical literature. Built with NumPy, SciPy, and Matplotlib, with Jupyter notebooks for interactive analysis. Future direction is to integrate all subsystem models into a unified full-car kinematic simulator capable of predicting dynamic behavior from first principles."
+        data-image="assets/suspension-model.png"
+        data-gallery="assets/suspension-model-2.png,assets/suspension-model-3.png"
+        data-link="https://github.com/YOUR_USERNAME/suspension-models"
+        data-link-label="View on GitHub →">
         <div class="project-image">
-          <!--
-            Replace with: <img src="assets/suspension-model.png" alt="Suspension Model" />
-          -->
           <div class="img-placeholder">assets/suspension-model.png</div>
         </div>
         <div class="project-body">
           <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Vehicle Dynamics</span>
-            <span class="tag">Simulation</span>
+            <span class="tag">Python</span><span class="tag">Vehicle Dynamics</span><span class="tag">Simulation</span>
           </div>
           <h3>Automotive Steering &amp; Suspension Models</h3>
-          <p>
-            A self-driven collection of multi-DOF physics models simulating suspension geometry,
-            tire force generation, and steering dynamics. Built in Python using NumPy, SciPy, and
-            Matplotlib, with future plans to unify into a full-car kinematic simulator.
-          </p>
-          <a href="https://github.com/YOUR_USERNAME/suspension-models" class="project-link" target="_blank">
-            View on GitHub →
-          </a>
+          <p>A self-driven collection of multi-DOF physics models simulating suspension geometry, tire force generation, and steering dynamics.</p>
+          <span class="project-hint">Click to expand →</span>
         </div>
       </div>
 
-      <!-- PROJECT 2 -->
-      <div class="project-card reveal">
+      <div class="project-card reveal"
+        data-title="Electrolysis Electrode Simulation"
+        data-tags="Ansys FEA,CFD,Electrochemistry"
+        data-summary="Modelling 3D electric fields and electrochemical behavior of an ultra-high current density electrolysis system at NECTAR Group."
+        data-description="As a research assistant in UC Santa Cruz's NECTAR Group, I develop 3D simulations of electrode assemblies for an ultra-high current density electrolysis project. This involves electrostatic and thermal FEA in Ansys to model field distributions and heat generation, as well as CFD simulations of electrochemical reactions and liquid flow dynamics. The goal is to characterize and optimize electrode geometry and operating conditions. Future work will extend to supporting the thin-film reactive laser-induced crystallization project within the group."
+        data-image="assets/nectar-fem.png"
+        data-gallery="assets/nectar-fem-2.png,assets/nectar-mesh.png"
+        data-link="https://nectar.soe.ucsc.edu"
+        data-link-label="NECTAR Group ↗">
         <div class="project-image">
-          <!--
-            Replace with: <img src="assets/nectar-fem.png" alt="FEA Simulation" />
-          -->
           <div class="img-placeholder">assets/nectar-fem.png</div>
         </div>
         <div class="project-body">
           <div class="project-tags">
-            <span class="tag">Ansys FEA</span>
-            <span class="tag">CFD</span>
-            <span class="tag">Electrochemistry</span>
+            <span class="tag">Ansys FEA</span><span class="tag">CFD</span><span class="tag">Electrochemistry</span>
           </div>
           <h3>Electrolysis Electrode Simulation</h3>
-          <p>
-            As a research volunteer at NECTAR (of Baskin Engineering @ UCSC), I model 3D electric fields
-            and electrochemical behavior of the ultra-high current density seawater electrolysis system
-            using Ansys. In this role, I am also learning Fortran for future use in scientific computing software. 
-          </p>
-          <a href="https://nectar.soe.ucsc.edu/home" class="project-link" target="_blank">
-            NECTAR Group ↗
-          </a>
+          <p>Modelling 3D electric fields and electrochemical behavior of an ultra-high current density electrolysis system at UC Santa Cruz's NECTAR Group.</p>
+          <span class="project-hint">Click to expand →</span>
         </div>
       </div>
 
-      <!-- PROJECT 3 -->
-      <div class="project-card reveal">
+      <div class="project-card reveal"
+        data-title="Formula Slug FSAE EV"
+        data-tags="CAD,Aerodynamics,CFRP,Vehicle Dynamics"
+        data-summary="Vehicle Dynamics Lead and Composites Member on UCSC's electric Formula SAE team. Founding member of the aerodynamics subteam."
+        data-description="As Vehicle Dynamics Lead, I direct research into autocross handling and stability for UCSC's electric Formula SAE vehicle. This includes developing and maintaining multi-DOF suspension, steering, and tire models, collaborating with telemetry and data acquisition members to validate simulation outputs against real-world data, reviewing and optimizing part designs in Onshape, and presenting physics lectures to a 200+ member organization. As a founding member of the aerodynamics subteam, I helped establish its research direction and initial design methodology. As a Composites Member, I characterize CFRP material properties, fabricate precision components using vacuum bagging and high-temperature curing ovens, and manage inventory of lab materials."
+        data-image="assets/fsae-car.jpg"
+        data-gallery="assets/fsae-aero.jpg,assets/fsae-cad.png,assets/fsae-composites.jpg"
+        data-link="https://github.com/YOUR_USERNAME"
+        data-link-label="Learn More →">
         <div class="project-image">
-          <!--
-            Replace with: <img src="assets/fsae-car.jpg" alt="Formula Slug EV" />
-          -->
           <div class="img-placeholder">assets/fsae-car.jpg</div>
         </div>
         <div class="project-body">
           <div class="project-tags">
-            <span class="tag">CAD</span>
-            <span class="tag">Aerodynamics</span>
-            <span class="tag">CFRP</span>
+            <span class="tag">CAD</span><span class="tag">Aerodynamics</span><span class="tag">CFRP</span>
           </div>
           <h3>Formula Slug FSAE EV</h3>
-          <p>
-            filler text
-          </p>
-          <a href="https://github.com/YOUR_USERNAME" class="project-link" target="_blank">
-            Learn More →
-          </a>
+          <p>Vehicle Dynamics Lead and Composites Member on UCSC's electric Formula SAE team. Founding member of the aerodynamics subteam.</p>
+          <span class="project-hint">Click to expand →</span>
         </div>
       </div>
 
       <!--
-        ═══════════════════════════════════════════════════
-        copy+paste this block to make more projects
+        ADD MORE PROJECTS — copy this block:
 
-        <div class="project-card reveal">
+        <div class="project-card reveal"
+          data-title="Your Project Title"
+          data-tags="Tag1,Tag2,Tag3"
+          data-summary="Short description on the card."
+          data-description="Full description in the modal. Can be as long as you like."
+          data-image="assets/your-image.jpg"
+          data-gallery="assets/extra1.jpg,assets/extra2.jpg"
+          data-link="https://your-link.com"
+          data-link-label="View Project →">
           <div class="project-image">
-            <img src="assets/YOUR-IMAGE.jpg" alt="Project Name" />
+            <img src="assets/your-image.jpg" alt="Project Name" />
           </div>
           <div class="project-body">
             <div class="project-tags">
-              <span class="tag">Tag 1</span>
-              <span class="tag">Tag 2</span>
+              <span class="tag">Tag1</span><span class="tag">Tag2</span>
             </div>
-            <h3>Project Title</h3>
-            <p>Description of the project.</p>
-            <a href="YOUR_LINK" class="project-link" target="_blank">View Project →</a>
+            <h3>Your Project Title</h3>
+            <p>Short description on the card.</p>
+            <span class="project-hint">Click to expand →</span>
           </div>
         </div>
-        ═══════════════════════════════════════════════════
       -->
 
     </div>
   </section>
 
-  <!-- SKILLS -->
   <div id="skills">
     <div class="skills-inner">
       <p class="section-label reveal">Capabilities</p>
       <h2 class="reveal">Technical<br>Skills</h2>
-
       <div class="skills-grid reveal">
         <div class="skill-group">
           <p class="skill-group-title">Simulation &amp; Analysis</p>
           <ul class="skill-list">
-            <li>Ansys Maxwell FEA</li>
-            <li>Ansys Fluent CFD</li>
+            <li>Ansys FEA (Electrostatic, Thermal)</li>
+            <li>CFD (Electrochemical, Flow)</li>
             <li>Multi-DOF Dynamic Modeling</li>
             <li>Tire &amp; Suspension Simulation</li>
           </ul>
@@ -772,7 +322,6 @@
     </div>
   </div>
 
-  <!-- CONTACT -->
   <section id="contact">
     <p class="section-label reveal">Get In Touch</p>
     <h2 class="reveal">Contact</h2>
@@ -782,35 +331,40 @@
       </div>
       <div class="contact-links">
         <a href="mailto:casushin@ucsc.edu" class="contact-link">
-          <div>
-            <span class="contact-link-label">Email</span>
-            <span class="contact-link-value">casushin@ucsc.edu</span>
-          </div>
+          <div><span class="contact-link-label">Email</span><span class="contact-link-value">casushin@ucsc.edu</span></div>
         </a>
-        <a href="https://github.com/YOUR_USERNAME" class="contact-link" target="_blank">
-          <div>
-            <span class="contact-link-label">GitHub</span>
-            <span class="contact-link-value">github.com/calebshin1</span>
-          </div>
+        <a href="https://github.com/calebshin1" class="contact-link" target="_blank">
+          <div><span class="contact-link-label">GitHub</span><span class="contact-link-value">github.com/calebshin1</span></div>
         </a>
-        <a href="https://linkedin.com/in/YOUR_USERNAME" class="contact-link" target="_blank">
-          <div>
-            <span class="contact-link-label">LinkedIn</span>
-            <span class="contact-link-value">linkedin.com/in/casushin</span>
-          </div>
+        <a href="https://linkedin.com/in/casushin" class="contact-link" target="_blank">
+          <div><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">linkedin.com/in/casushin</span></div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <span>Caleb Shin — San Diego & Santa Cruz, CA</span>
     <span>Hello, World!</span>
   </footer>
 
-  <!-- SCROLL REVEAL SCRIPT -->
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal" id="modal">
+      <div class="modal-close"><button id="modal-close-btn">✕ Close</button></div>
+      <div id="modal-hero-image-container"></div>
+      <div class="modal-content">
+        <div class="project-tags" id="modal-tags"></div>
+        <h3 id="modal-title"></h3>
+        <p id="modal-description"></p>
+        <div class="modal-gallery" id="modal-gallery"></div>
+        <a class="modal-link" id="modal-link" href="#" target="_blank"></a>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -819,9 +373,66 @@
         }
       });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
 
+    // Modal
+    const backdrop        = document.getElementById('modal-backdrop');
+    const closeBtn        = document.getElementById('modal-close-btn');
+    const modalTitle      = document.getElementById('modal-title');
+    const modalDesc       = document.getElementById('modal-description');
+    const modalTags       = document.getElementById('modal-tags');
+    const modalGallery    = document.getElementById('modal-gallery');
+    const modalHero       = document.getElementById('modal-hero-image-container');
+    const modalLink       = document.getElementById('modal-link');
+
+    function openModal(card) {
+      const title      = card.dataset.title       || '';
+      const tags       = card.dataset.tags        || '';
+      const desc       = card.dataset.description || card.dataset.summary || '';
+      const image      = card.dataset.image       || '';
+      const gallery    = card.dataset.gallery     || '';
+      const link       = card.dataset.link        || '#';
+      const linkLabel  = card.dataset.linkLabel   || 'View Project →';
+
+      modalHero.innerHTML = image
+        ? `<img class="modal-hero-image" src="${image}" alt="${title}" onerror="this.parentElement.innerHTML='<div class=modal-hero-placeholder>Image coming soon</div>'">`
+        : `<div class="modal-hero-placeholder">No image provided</div>`;
+
+      modalTitle.innerHTML   = title;
+      modalDesc.textContent  = desc;
+      modalTags.innerHTML    = tags.split(',').map(t => `<span class="tag">${t.trim()}</span>`).join('');
+
+      const imgs = gallery ? gallery.split(',').map(s => s.trim()).filter(Boolean) : [];
+      if (imgs.length) {
+        modalGallery.style.display = 'grid';
+        modalGallery.innerHTML = imgs.map(src =>
+          `<img src="${src}" alt="Project image" onerror="this.outerHTML='<div class=modal-gallery-placeholder>Image coming soon</div>'">`
+        ).join('');
+      } else {
+        modalGallery.style.display = 'none';
+        modalGallery.innerHTML = '';
+      }
+
+      modalLink.href        = link;
+      modalLink.textContent = linkLabel;
+
+      backdrop.classList.add('open');
+      document.body.classList.add('modal-open');
+      document.getElementById('modal').scrollTop = 0;
+    }
+
+    function closeModal() {
+      backdrop.classList.remove('open');
+      document.body.classList.remove('modal-open');
+    }
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => openModal(card));
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  </script>
 </body>
 </html>
