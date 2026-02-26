@@ -367,7 +367,7 @@
          I currently use three models. First is a dual-track steering model that solves an understeer gradient, based upon a tire model and geometric factors in the steering system. Second is a dynamic suspension geometry calculator, that takes vertical travel as input, and outputs changes in the toe, camber, caster, and scrub. Third is a suspension spring rate model, which can be used in one of two ways: finding a spring rate based off of target parameters (roll stiffness, pitch stiffness, etc), or finding parameters based off of a spring rate, all while involving the suspension geometry.
         </p>
         <p>
-          The most difficult part of making these models is knowing when to preserve as much mathematical definition as possible, and when to sacrifice some precision for simpler integration. For example, these are all steady-state models that typically only concern one frame of motion. I determined that transient models that accept accelerations/forces of interest from many dimensions are too complicated for us, and do not give meaningful value over a solid understanding of steady-state behaviors. For example, the steering model only accounts for lateral forces, and is forced to simulate a skidpad scenario (vehicle driving in a circle at constant yaw rate). The suspension stiffness model, for now, does not solve for any forces in the system (which would be a fairly reasonable next step for the model).
+          The most difficult part of making these models is knowing when to preserve as much mathematical definition as possible, and when to sacrifice some precision for simpler integration. For example, these are all steady-state models that typically only concern one frame of motion. I determined that transient models that accept accelerations/forces of interest from many dimensions are too complicated for us, and do not give meaningful value over a solid understanding of steady-state behaviors (although, we're very interested to work with transient models in the future). For example, the steering model only accounts for lateral forces, and is forced to simulate a skidpad scenario (vehicle driving in a circle at constant yaw rate). The suspension stiffness model, for now, does not solve for any forces in the system (which would be a fairly reasonable next step for the model).
         </p>
         <p>
           Now, we are planning on combining the three models into a full-car simulation, with the addition of some other goodies to understand even more information, and make the models even more precise.
@@ -382,7 +382,17 @@
       gallery: ["assets/maxwellsim.jpg", "assets/emag.jpg", "assets/evec.jpg"],
       link: "https://nectar.soe.ucsc.edu",
       linkLabel: "NECTAR Group ↗",
-      description: ``
+      description: `
+      <p>
+      I just recently joined the team of researchers at NECTAR, and my role is to do modelling work to assist the grad & postdoc researchers in their findings. Specifically, NECTAR used to have more PhD students who did computer modelling for their research. However, they have now moved on from the lab, and the FEA/CFD capabilities of NECTAR have declined slightly. To assist Dr. Kobayashi and his team, I decided to take my interest in computer sims to NECTAR, and I now use Ansys to model their ultra-high current density electrolysis project.
+      </p>
+      <p>
+      I am using Ansys Maxwell to simulate the electrode setups that cannot be modelled with 2D FEA (2a-1c, 3a-1c, 4a-1c). Maxwell allows us to very quickly run simulations and observe electrostatic and magnetostatic behaviors of the electrolysis system. I’m preparing to utilize Ansys Fluent and its electrolysis/fuel cell module (Butler-Volmer solver) to model the electrochemical behaviors, liquid flow, molecular dynamics, and thermal behaviors of the system. As of right now, we’re continuing to validate the Ansys models to ensure that they are sufficiently accurate.
+      </p>
+      <p>
+      The Maxwell simulations have done an extremely good job of reducing the CAD to FEA to result timeline, as the setup usually takes about 15 minutes, and the simulation runtime is no more than 5 minutes. MOOSE, the software NECTAR used (and still uses), is also quick and powerful, but falls short when it comes to fast iterations due to its code-intensive nature. Time that used to be spent in MOOSE can now be used to better understand the system itself.
+      </p>
+      `
     },
 
     plasma: {
