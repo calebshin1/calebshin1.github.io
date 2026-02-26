@@ -175,20 +175,8 @@
         data-link-label   — text for that button
       -->
 
-      <div class="project-card reveal"
-        data-title="Automotive Steering &amp; Suspension Models"
-        data-summary="description"
-        data-description="These are all written in Python, for its ease of use and because the calculators we have been using until now are also Python scripts. These models have been very helpful in assisting our engineers derive major design decisions, which we did not research the reasons as for why they were so in years past. Each model was validated with experimental observations measured from testing days and data from our previous cars. Each model required a large amount of independent study, and information was taken from a large pool of textbooks and papers. The models are a product of collaborative effort from me and my members on my team, but I manage, plan, help code, and overview each model. 
-
-        I currently use three models. First is a dual-track steering model that solves an understeer gradient, based upon a tire model and geometric factors in the steering system. Second is a dynamic suspension geometry calculator, that takes vertical travel as input, and outputs changes in the toe, camber, caster, and scrub. Third is a suspension spring rate model, which can be used in one of two ways: finding a spring rate based off of target parameters (roll stiffness, pitch stiffness, etc), or finding parameters based off of a spring rate, all while involving the suspension geometry. 
-
-        The most difficult part of making these models is knowing when to preserve as much mathematical definition as possible, and when to sacrifice some precision for simpler integration. For example, these are all steady-state models that typically only concern one frame of motion. I determined that transient models that accept accelerations/forces of interest from many dimensions are too complicated for us, and do not give meaningful value over a solid understanding of steady-state behaviors. For example, the steering model only accounts for lateral forces, and is forced to simulate a skidpad scenario (vehicle driving in a circle at constant yaw rate). The suspension stiffness model, for now, does not solve for any forces in the system (which would be a fairly reasonable next step for the model).
-
-        Now, we are planning on combining the three models into a full-car simulation, with the addition of some other goodies to understand even more information, and make the models even more precise."
-        data-image="assets/usgplot.jpg"
-        data-gallery="assets/usggraph.jpg,assets/cornerviz.jpg,assets/usgplot.jpg"
-        data-link="https://github.com/formulaslug/Sims-Data/branches"
-        data-link-label="View on GitHub →">
+      <div class="project-card reveal" data-id="fsae">
+      </div>
         <div class="project-image">
           <img src="assets/usgplot.jpg" alt="Project Name" />
         </div>
@@ -202,14 +190,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal"
-        data-title="Electrolysis Electrode Simulation"
-        data-summary="description"
-        data-description="COMING SOON"
-        data-image="assets/maxwellsim.jpg"
-        data-gallery="assets/maxwellsim.jpg,assets/nectar-mesh.png"
-        data-link="https://nectar.soe.ucsc.edu"
-        data-link-label="NECTAR Group ↗">
+      <div class="project-card reveal" data-id="nectar">
         <div class="project-image">
           <img src="assets/maxwellsim.jpg" alt="Project Name" />
         </div>
@@ -223,13 +204,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal"
-          data-title="Plasma Systems and Modelling"
-          data-summary="description"
-          data-description="DESCRIPTION COMING SOON"
-          data-image="assets/vac_chamber.jpg"
-          data-gallery="assets/vac_chamber.jpg,assets/extra2.jpg"
-          >
+      <div class="project-card reveal" data-id="plasma">
           <div class="project-image">
             <img src="assets/vac_chamber.jpg" alt="Project Name" />
           </div>
@@ -243,12 +218,7 @@
           </div>
         </div>
 
-        <div class="project-card reveal"
-          data-title="Coursework"
-          data-summary="description"
-          data-description="DESCRIPTION COMING SOON"
-          data-image="assets/coursework.jpg"
-          data-gallery="assets/coursework.jpg,assets/extra1.jpg">
+        <div class="project-card reveal" data-id="classes">
           <div class="project-image">
             <img src="assets/coursework.jpg" alt="Project Name" />
           </div>
@@ -262,12 +232,7 @@
           </div>
         </div>
 
-        <div class="project-card reveal"
-          data-title="Steering Stabilizer"
-          data-summary="description"
-          data-description="DESCRIPTION COMING SOON"
-          data-image="assets/stabilizer1.jpg"
-          data-gallery="assets/stabilizer2.jpg,assets/cadscreenshot.jpg">
+        <div class="project-card reveal" data-id="bicycle">
           <div class="project-image">
             <img src="assets/stabilizer1.jpg" alt="Project Name" />
           </div>
@@ -281,14 +246,7 @@
           </div>
         </div>
 
-        <div class="project-card reveal"
-          data-title="Wall Light"
-          data-summary="description"
-          data-description="DESCRIPTION COMING SOON"
-          data-image="assets/scienceproj.jpg"
-          data-gallery="assets/scienceproj.jpg,assets/extra2.jpg"
-          data-link="https://youtu.be/hNAN7eLGz5o"
-          data-link-label="View on YouTube ↗">
+        <div class="project-card reveal" data-id="light">
           <div class="project-image">
             <img src="assets/scienceproj.jpg" alt="Project Name" />
           </div>
@@ -440,75 +398,164 @@
   </div>
 
   <script>
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // ── PROJECT DATA ──
+  // Edit your project content here. Full HTML is supported in description.
+  const projects = {
 
-    // Modal
-    const backdrop        = document.getElementById('modal-backdrop');
-    const closeBtn        = document.getElementById('modal-close-btn');
-    const modalTitle      = document.getElementById('modal-title');
-    const modalDesc       = document.getElementById('modal-description');
-    const modalTags       = document.getElementById('modal-tags');
-    const modalGallery    = document.getElementById('modal-gallery');
-    const modalHero       = document.getElementById('modal-hero-image-container');
-    const modalLink       = document.getElementById('modal-link');
+    fsae: {
+      title: "Automotive Steering &amp; Suspension Models",
+      tags: [],
+      image: "assets/usgplot.jpg",
+      gallery: ["assets/usgplot.jpg", "assets/usggraph.jpg", "assets/cornerviz.jpg"],
+      link: "https://github.com/formulaslug/Sims-Data/branches",
+      linkLabel: "View on GitHub →",
+      description: `
+        <p>
+         These are all written in Python, for its ease of use and because the calculators we have been using until now are also Python scripts. These models have been very helpful in assisting our engineers derive major design decisions, which we did not research the reasons as for why they were so in years past. Each model was validated with experimental observations measured from testing days and data from our previous cars. Each model required a large amount of independent study, and information was taken from a large pool of textbooks and papers. The models are a product of collaborative effort from me and my members on my team, but I manage, plan, help code, and overview each model.
+        </p>
+        <p>
+         I currently use three models. First is a dual-track steering model that solves an understeer gradient, based upon a tire model and geometric factors in the steering system. Second is a dynamic suspension geometry calculator, that takes vertical travel as input, and outputs changes in the toe, camber, caster, and scrub. Third is a suspension spring rate model, which can be used in one of two ways: finding a spring rate based off of target parameters (roll stiffness, pitch stiffness, etc), or finding parameters based off of a spring rate, all while involving the suspension geometry.
+        </p>
+        <p>
+          The most difficult part of making these models is knowing when to preserve as much mathematical definition as possible, and when to sacrifice some precision for simpler integration. For example, these are all steady-state models that typically only concern one frame of motion. I determined that transient models that accept accelerations/forces of interest from many dimensions are too complicated for us, and do not give meaningful value over a solid understanding of steady-state behaviors. For example, the steering model only accounts for lateral forces, and is forced to simulate a skidpad scenario (vehicle driving in a circle at constant yaw rate). The suspension stiffness model, for now, does not solve for any forces in the system (which would be a fairly reasonable next step for the model).
+        </p>
+        <p>
+          Now, we are planning on combining the three models into a full-car simulation, with the addition of some other goodies to understand even more information, and make the models even more precise.
+        </p>
+      `
+    },
 
-    function openModal(card) {
-      const title      = card.dataset.title       || '';
-      const tags       = card.dataset.tags        || '';
-      const desc       = card.dataset.description || card.dataset.summary || '';
-      const image      = card.dataset.image       || '';
-      const gallery    = card.dataset.gallery     || '';
-      const link       = card.dataset.link        || '#';
-      const linkLabel  = card.dataset.linkLabel   || 'View Project →';
+    nectar: {
+      title: "Electrolysis Electrode Simulation",
+      tags: [],
+      image: "assets/maxwellsim.jpg",
+      gallery: ["assets/maxwellsim.jpg", "assets/emag.jpg", "assets/evec.jpg"],
+      link: "https://nectar.soe.ucsc.edu",
+      linkLabel: "NECTAR Group ↗",
+      description: ``
+    },
 
-      modalHero.innerHTML = image
-        ? `<img class="modal-hero-image" src="${image}" alt="${title}" onerror="this.parentElement.innerHTML='<div class=modal-hero-placeholder>Image coming soon</div>'">`
-        : `<div class="modal-hero-placeholder">No image provided</div>`;
+    plasma: {
+      title: "Plasma Systems and Modelling",
+      tags: [],
+      image: "assets/vac_chamber.jpg",
+      gallery: ["assets/vac_chamber.jpg"],
+      link: "",
+      linkLabel: "",
+      description: ``
+    },
 
-      modalTitle.innerHTML   = title;
-      modalDesc.textContent  = desc;
-      modalTags.innerHTML    = tags.split(',').map(t => `<span class="tag">${t.trim()}</span>`).join('');
+    classes: {
+      title: "Coursework",
+      tags: [],
+      image: "assets/coursework.jpg",
+      gallery: ["assets/coursework.jpg"],
+      link: "",
+      linkLabel: "",
+      description: ``
+    },
+    bicycle: {
+      title: "Bicycle Steering Stabilizer",
+      tags: [],
+      image: "assets/stabilizer1.jpg",
+      gallery: ["assets/stabilizer1.jpg", "assets/stabilizer2.jpg", "assets/cadscreenshot.jpg"],
+      link: "",
+      linkLabel: "",
+      description: ``
+    },
+    light: {
+      title: "Sound-Activated Arduino Wall Light",
+      tags: [],
+      image: "assets/scienceproj.jpg",
+      gallery: ["assets/scienceproj.jpg"],
+      link: "",
+      linkLabel: "",
+      description: ``
+    },
 
-      const imgs = gallery ? gallery.split(',').map(s => s.trim()).filter(Boolean) : [];
-      if (imgs.length) {
-        modalGallery.style.display = 'grid';
-        modalGallery.innerHTML = imgs.map(src =>
-          `<img src="${src}" alt="Project image" onerror="this.outerHTML='<div class=modal-gallery-placeholder>Image coming soon</div>'">`
-        ).join('');
-      } else {
-        modalGallery.style.display = 'none';
-        modalGallery.innerHTML = '';
+  };
+
+  // ── MODAL LOGIC ──
+  const backdrop = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('modal-close-btn');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-description');
+  const modalTags = document.getElementById('modal-tags');
+  const modalGallery = document.getElementById('modal-gallery');
+  const modalHero = document.getElementById('modal-hero-image-container');
+  const modalLink = document.getElementById('modal-link');
+
+  function openModal(card) {
+    const id = card.dataset.id;
+    const project = projects[id];
+    if (!project) return;
+
+    // Hero image
+    modalHero.innerHTML = project.image
+      ? `<img class="modal-hero-image" src="${project.image}" alt="${project.title}"
+           onerror="this.parentElement.innerHTML='<div class=modal-hero-placeholder>Image coming soon</div>'">`
+      : `<div class="modal-hero-placeholder">No image provided</div>`;
+
+    // Title
+    modalTitle.innerHTML = project.title;
+
+    // Tags
+    modalTags.innerHTML = project.tags
+      .map(t => `<span class="tag">${t}</span>`)
+      .join('');
+
+    // Description — full HTML supported
+    modalDesc.innerHTML = project.description || '';
+
+    // Gallery
+    const imgs = project.gallery || [];
+    if (imgs.length) {
+      modalGallery.style.display = 'grid';
+      modalGallery.innerHTML = imgs.map(src =>
+        `<img src="${src}" alt="Project image"
+           onerror="this.outerHTML='<div class=modal-gallery-placeholder>Image coming soon</div>'">`
+      ).join('');
+    } else {
+      modalGallery.style.display = 'none';
+      modalGallery.innerHTML = '';
+    }
+
+    // Link
+    modalLink.href = project.link || '#';
+    modalLink.textContent = project.linkLabel || 'View Project →';
+
+    backdrop.classList.add('open');
+    document.body.classList.add('modal-open');
+    document.getElementById('modal').scrollTop = 0;
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
       }
-
-      modalLink.href        = link;
-      modalLink.textContent = linkLabel;
-
-      backdrop.classList.add('open');
-      document.body.classList.add('modal-open');
-      document.getElementById('modal').scrollTop = 0;
-    }
-
-    function closeModal() {
-      backdrop.classList.remove('open');
-      document.body.classList.remove('modal-open');
-    }
-
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', () => openModal(card));
     });
-
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-  </script>
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
