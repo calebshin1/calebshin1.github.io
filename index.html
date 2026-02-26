@@ -178,12 +178,15 @@
       <div class="project-card reveal"
         data-title="Automotive Steering &amp; Suspension Models"
         data-summary="description"
-        data-description="These are all written in Python, for its ease of use and because the calculators we have been using until now are also Python scripts. These models have been very helpful in assisting our engineers derive major design decisions, which we did not research the reasons as for why they were so in years past. Each model was validated with experimental observations measured from testing days and data from our previous cars. Each model required a large amount of independent study, and information was taken from a large pool of textbooks and papers. The models are a product of collaborative effort from me and my members on my team, but I manage, plan, help code, and overview each model.
+        data-description="These are all written in Python, for its ease of use and because the calculators we have been using until now are also Python scripts. These models have been very helpful in assisting our engineers derive major design decisions, which we did not research the reasons as for why they were so in years past. Each model was validated with experimental observations measured from testing days and data from our previous cars. Each model required a large amount of independent study, and information was taken from a large pool of textbooks and papers. The models are a product of collaborative effort from me and my members on my team, but I manage, plan, help code, and overview each model. 
+
         I currently use three models. First is a dual-track steering model that solves an understeer gradient, based upon a tire model and geometric factors in the steering system. Second is a dynamic suspension geometry calculator, that takes vertical travel as input, and outputs changes in the toe, camber, caster, and scrub. Third is a suspension spring rate model, which can be used in one of two ways: finding a spring rate based off of target parameters (roll stiffness, pitch stiffness, etc), or finding parameters based off of a spring rate, all while involving the suspension geometry. 
+
         The most difficult part of making these models is knowing when to preserve as much mathematical definition as possible, and when to sacrifice some precision for simpler integration. For example, these are all steady-state models that typically only concern one frame of motion. I determined that transient models that accept accelerations/forces of interest from many dimensions are too complicated for us, and do not give meaningful value over a solid understanding of steady-state behaviors. For example, the steering model only accounts for lateral forces, and is forced to simulate a skidpad scenario (vehicle driving in a circle at constant yaw rate). The suspension stiffness model, for now, does not solve for any forces in the system (which would be a fairly reasonable next step for the model).
+
         Now, we are planning on combining the three models into a full-car simulation, with the addition of some other goodies to understand even more information, and make the models even more precise."
         data-image="assets/usgplot.jpg"
-        data-gallery="assets/usggraph.jpg,assets/cornerviz.jpg"
+        data-gallery="assets/usggraph.jpg,assets/cornerviz.jpg,assets/usgplot.jpg"
         data-link="https://github.com/formulaslug/Sims-Data/branches"
         data-link-label="View on GitHub →">
         <div class="project-image">
