@@ -423,9 +423,19 @@
       tags: [],
       image: "assets/coursework.jpg",
       gallery: ["assets/coursework.jpg"],
-      link: "",
-      linkLabel: "",
-      description: ``
+      link: "View on GitHub",
+      linkLabel: "https://github.com/calebshin1/coursework",
+      description: `
+      <p>
+      As an electrical engineering student, I have had the chance to take several project-focused classes. At UCSC, I’ve completed both CSE 12 and ECE 13, and am currently taking ECE 80T. These classes have given me the opportunity to learn about the fundamentals of computer science and electrical engineering, namely in programming. 
+      </p>
+      <p>
+      CSE 12 is a course that focuses on digital logic and the assembly language for RISC-V. In this class, I learned about logic synthesis, combinatorial logic, transistor principles, and low-level programming in assembly. I completed four intensive labs in the course with the first two centered around digital logic, and the last two focused on programming in assembly. This class taught me how to appreciate the lowest of low-level hardware organization and communication between human and machine. 
+      </p>
+      <p>
+      ECE 13 is a course that focuses on C programming and microcontrollers. In this class, I spent many hours programming in C, and gained hands-on experience with creating state machines, object-oriented programs, and MCU IO with the STM32 F411 RE. I completed 8 programming-heavy labs. This class taught me how to debug code, abide by “good programming practices”, and how to debrief and communicate my projects. I use many skills from this class to this day, as many of my projects require programming. 
+      </p>
+      `
     },
     bicycle: {
       title: "Bicycle Steering Stabilizer",
@@ -434,16 +444,36 @@
       gallery: ["assets/stabilizer1.jpg", "assets/stabilizer2.jpg", "assets/cadscreenshot.jpg"],
       link: "",
       linkLabel: "",
-      description: ``
+      description: `
+      <p>
+      Mountain bikes traverse extremely rough terrain. Riders experience a multitude of very high forces, and most of the time, this is transmitted through the bike into the rider, which causes discomfort and can even be dangerous. The bicycle steering stabilizer (not to be confused with a steering damper) was a product designed by Jo Klieber for Canyon/Syntace/Liteville. It remains an exclusive option on high-end mountain bikes, making the technology elusive and prohibitively expensive.
+      </p>
+      <p>
+      Curious about the idea, I modeled a similar product based on Klieber’s design. My design is modular and is adaptable to all types of bikes, and is not limited just to mountain bikes. It was tuned to have a stronger influence on the steering mechanism closest to dead center (nose of the cam) to partially damp the initial ramp of unwanted high-amplitude inputs (jerks) at the handlebars. As the rider turns the handlebars more, the cam system goes past the nose, and the required force to turn the handlebars increases at a lower rate. 
+      </p>
+      <p>
+      The parts were machined from 6061-T6 aluminum by JLCCNC. It was tested by several trials on the same section of trail, where control trials were run first, then trials with the stabilizer at a weak spring rate, and then trials with the stabilizer at a high spring rate. It was determined that the effect of the stabilizer was noticeable, especially when it came to turning. However, due to the noise created by the system, it was removed. 
+      </p>
+      `
     },
     light: {
       title: "Sound-Activated Arduino Wall Light",
       tags: [],
       image: "assets/scienceproj.jpg",
       gallery: ["assets/scienceproj.jpg"],
-      link: "",
-      linkLabel: "",
-      description: ``
+      link: "https://youtu.be/hNAN7eLGz5o",
+      linkLabel: "Watch on YouTube",
+      description: `
+      <p>
+      This project was my first venture into the world of MCUs, programming, and circuitry. It’s one of the earliest documented projects I’ve completed.
+      </p>
+      <p>
+      The circuit uses an Arduino Uno, which detects high-decibel noises (using a microphone) in the surrounding environment and will either turn on/off a nicely-finished LED nightlight on the wall. Something that troubled me in the process is that only green or blue light would shine bright enough to see in a lit room, other colors like white or red struggled to achieve a clear enough brightness. Because of how rudimentary the circuit was, there was nothing between the IO pins of the Arduino to the LED lights that amplified the output current from the Arduino to the operating current of the LED strips, and therefore the LED strip was bottlenecked by the amount of current it could use. I also didn’t like how there was a cable coming out of the light, but the Arduino was too power-hungry to use off of a battery.
+      </p>
+      <p>
+      If I were to go back in time and re-do this project, I’d probably pick a prettier piece of wood first. However, I would much rather use a solderable breadboard and a smaller MCU like an ESP32 in conjunction with a battery to make the nightlight truly seamless, and pair it with the appropriate circuitry to correctly power the LED lights. 
+      </p>
+        `
     },
 
   };
