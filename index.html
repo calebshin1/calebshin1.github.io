@@ -137,7 +137,7 @@
       <p class="hero-tag">Electrical Engineering · UC Santa Cruz</p>
       <h1>Caleb<br><em>Shin</em></h1>
       <p class="hero-bio">
-        Hello, World! I'm Caleb, an electrical engineering student minoring in physics. I see the world through computer simulations of engineering fundamentals, and searching for answers within the well-understood and highly unknown is my passion. I'm interested in many fields, which you will see in the work I've done.
+        Hello, World! I'm Caleb, an electrical engineering student minoring in physics. I see engineering through the eyes of a physicist, and searching for creative answers in both the well-understood and highly unknown is my passion. I'm interested in many fields, which you will see in the work I've done. 
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -151,7 +151,7 @@
 
   <div class="stats-bar">
     <div class="stat"><span class="stat-number">3</span><span class="stat-label">Active Projects</span></div>
-    <div class="stat"><span class="stat-number">3</span><span class="stat-label">Past Projects</span></div>
+    <div class="stat"><span class="stat-number">5</span><span class="stat-label">Past Projects</span></div>
     <div class="stat"><span class="stat-number">EE '28</span><span class="stat-label">UC Santa Cruz</span></div>
   </div>
 
@@ -182,7 +182,7 @@
             <span class="tag">Current</span><span class="tag">Python</span><span class="tag">Applied Physics</span><span class="tag">Computer Sims</span>
           </div>
           <h3>Automotive Steering &amp; Suspension Models</h3>
-          <p>A collection of multi-DOF physics and geometry simulations of suspension/steering kinematics, tire forces, and high-level vehicle handling</p>
+          <p>A collection of multi-DOF physics and geometry simulations of suspension/steering kinematics, tire forces, and high-level vehicle handling.</p>
           <span class="project-hint">Click to expand →</span>
         </div>
       </div>
@@ -196,7 +196,7 @@
             <span class="tag">Current</span><span class="tag">Ansys FEA</span><span class="tag">CFD</span><span class="tag">Lab Experience</span>
           </div>
           <h3>Electrolysis Electrode Simulation</h3>
-          <p>Modelling 3D electric fields and electrochemical behavior of an ultra-high current density electrolysis system at the NECTAR Lab in UCSC.</p>
+          <p>FEA and CFD modelling of a laser-assisted, ultra-high current density electrolysis system at the NECTAR Lab in UCSC.</p>
           <span class="project-hint">Click to expand →</span>
         </div>
       </div>
@@ -243,6 +243,20 @@
           </div>
         </div>
 
+        <div class="project-card reveal" data-id="kbd">
+          <div class="project-image">
+            <img src="assets/kbd.jpg" alt="Project Name" />
+          </div>
+          <div class="project-body">
+            <div class="project-tags">
+              <span class="tag">Past</span><span class="tag">Electrical Engineering</span><span class="tag">Circuits</span><span class="tag">Embedded Systems</span>
+            </div>
+            <h3>Custom-made PCB Mechanical Keyboard</h3>
+            <p>A custom keyboard, down to the resistors, diodes, and capacitors.</p>
+            <span class="project-hint">Click to expand →</span>
+          </div>
+        </div>
+
         <div class="project-card reveal" data-id="light">
           <div class="project-image">
             <img src="assets/scienceproj.jpg" alt="Project Name" />
@@ -279,6 +293,7 @@
             <li>Python</li>
             <li>NumPy / SciPy / Matplotlib</li>
             <li>Fortran</li>
+            <li>C++</li>
             <li>C</li>
           </ul>
         </div>
@@ -294,7 +309,8 @@
         <div class="skill-group">
           <p class="skill-group-title">Lab &amp; Fabrication</p>
           <ul class="skill-list">
-            <li>Hands-on Fabrication</li>
+            <li>Sheet Metal Fabrication</li>
+            <li>3D Printing</li>
             <li>MV to UHV Vacuum Systems</li>
             <li>High-Temp Ovens &amp; Autoclaves</li>
             <li>Lab Safety &amp; SDS Compliance</li>
@@ -382,16 +398,13 @@
       linkLabel: "NECTAR Group ↗",
       description: `
       <p>
-      I just recently joined the team of researchers at NECTAR, and my role is to do modelling work to assist the grad & postdoc researchers in their findings. Specifically, NECTAR used to have more PhD students who did computer modelling for their research. However, those students have now moved on from the lab, and the FEA/CFD capabilities of NECTAR have declined slightly. To assist Dr. Kobayashi and his team, I decided to take my interest in computer sims to NECTAR, and I now use Ansys to model their ultra-high current density electrolysis project.
-      </p>
+      Not too long ago, I joined the team of researchers at NECTAR, and my role there is to do modelling work to assist my team in their findings. I also assist in setting up experiments and running them. 
       <p>
-      I am using Ansys Maxwell to simulate the electrode setups that cannot be modelled with 2D FEA (2a-1c, 3a-1c, 4a-1c). Maxwell allows us to very quickly run simulations and observe electrostatic and magnetostatic behaviors of the electrolysis system. I’m preparing to utilize Ansys Fluent and its electrolysis/fuel cell module (Butler-Volmer solver) to model the electrochemical behaviors, liquid flow, molecular dynamics, and thermal behaviors of the system. As of right now, we’re continuing to validate the Ansys models to ensure that they are sufficiently accurate.
-      </p>
+      I am using Ansys to simulate the electrode setups that cannot simply be modelled with 2D FEA. Ansys EDT allows us to very quickly run simulations and observe electrostatic and magnetostatic behaviors of the electrolysis system. The same applies for Fluent and Speos, which provide computational insight to liquid flow, gas transport, and optical properties of our experimental setup. 
       <p>
-      The Maxwell simulations have done an extremely good job of reducing the CAD to FEA to result timeline, as the setup usually takes about 15 minutes, and the simulation runtime is no more than 5 minutes. MOOSE, the software NECTAR used (and still uses), is also quick and powerful, but falls short when it comes to fast iterations due to its code-intensive nature. Time that used to be spent in MOOSE can now be used to better understand the system itself.
-      </p>
+      The Ansys simulations have done an extremely good job of reducing the modelling timeline, which has historically taken a very long time. With Ansys I have allowed the lab to import CAD models directly into the Ansys UI, do a small amount of meshing and setup, and run simulations very efficiently. Setup time is down, simulation runtime is down, and result accuracy is still plenty accurate. 
       <p>
-      In the future, I intend to also begin working on some of NECTAR’s other projects. I have started some preliminary work on the aluminum-based mirror ALD process for NASA JPL's telescopes, where I will be taking a look at thermal distribution and gas flow dynamics of the small scale & large scale ALD processes. I am also familiarizing myself with MOOSE, even though I mostly use Ansys these days. I’m very excited to be at NECTAR.
+      In this role I am also studying MOOSE, a C++ based Multiphysics solver by Idaho National Laboratory. I've also been introduced to the field of Materials Science & Engineering, which isn't an undergraduate degree offered at UCSC. However, since I am deeply engaged with the research at this MSE lab, I'm learning a lot about MSE fundamentals and creative ways of navigating bottlenecks and limitations, in true NECTAR fashion. 
       </p>
       `
     },
@@ -405,13 +418,11 @@
       linkLabel: "",
       description: `
       <p>
-      In November of 2025 I purchased a surplus vacuum chamber with the intention of creating a home laboratory plasma column with it. I’d learn, rather quickly, that actual vacuum hardware is rather expensive. I also later learned that high vacuum was completely unnecessary for the project. Although I don’t have a several thousand-dollar setup to show for it, I do understand vacuum systems much better than I did before. I have extensively studied flange types, vacuum hardware, pump setups, vacuum system planning, and problem solving in HV systems. 
-      </p>
+      This project is largely tabled for now (it's a really slow burn), but I'm still very engaged with it. 
       <p>
-      I still wanted to have some tangible experience with plasma physics, however, so I have now transitioned into scientific computing and its applications in plasma physics. Currently, I’m focusing on learning C++ for use in scientific computing applications, since most legacy software are usually built on and have APIs based on C++. I am particularly interested in molecular dynamics and magnetohydrodynamics, but both are extremely information-heavy and have steep learning curves. I am planning on completing an Applied Physics or Mathematics minor to include PDEs, Fluid Mechanics, and scientific computing into my EE degree.
-      </p>
+      In November 2025 I purchased a steel vacuum chamber with the intention of creating a home lab setup with it. I learned, rather quickly, that lab-grade vacuum hardware is extremely expensive. Since I cannot afford a several-thousand dollar vac setup with turbo pumps pulling to a billionth of an atmosphere, I've changed gears. 
       <p>
-      For the time being, I intend to continue studying plasma physics as a slow-burn extracurricular, and work towards being able to use scientific computing software for both single-processor and HPC applications. This will allow me to work towards my dream of one day becoming an engineer in a nuclear fusion facility, and so far, it’s given me lots of valuable insight into the field. 
+      I'm working on a new design for a simple vacuum setup that allows me to ionize argon gas into a cold plasma. I plan on using this setup and adding in a simple Langmuir probe, which will allow me to have a hands-on experience with plasma physics, HV electrical engineering, and some really cool diagnostic work. I really have learned so much about this field already, and I will take my experience to figuring out exactly what I will be needing, by understanding what I don't. 
       </p>
       `
     },
@@ -453,6 +464,25 @@
       The parts were machined from 6061-T6 aluminum by JLCCNC. It was tested by several trials on the same section of trail, where control trials were run first, then trials with the stabilizer at a weak spring rate, and then trials with the stabilizer at a high spring rate. It was determined that the effect of the stabilizer was noticeable, especially when it came to turning. However, due to the noise created by the system, it was removed. 
       </p>
       `
+    },
+    kbd: {
+      title: "Custom PCB-based Mechanical Keyboard",
+      tags: [],
+      image: "assets/kbd.jpg",
+      gallery: ["assets/kbd.jpg","assets/soldering.jpg","assets/silkscreen.jpg"],
+      link: "",
+      linkLabel: "",
+      description: `
+      <p>
+      I've always liked custom mechanical keyboards. This was my first ever custom keyboard, and it went a little overboard.
+      <p>
+      This is a keyboard I designed off of a modified COTS product. There was one major issue when I first built the keyboard: I broke the solder pads for the USB-C connector, which was crucial for the keyboard to function.
+      <p>
+      I found the PCB's .gbr files online and took to KiCad to modify the keyboard. The original PCB had a USB-C connector, which is extremely difficult to solder as a THT component. I switched it out for a Mini USB port, which only requires 5 solder connections, as it is a simpler standard. After modifying the USB pinout on the PCB, I also added some custom silkscreen with my name on it. I sent the .gbr out to PCBWay to have it custom manufactured, and it arrived shortly after. Following this was about four hours of soldering over 100 electrical components. After soldering, I had to do extensive firmware integration to get the ICs up and running, as there were some faults from the get-go. 
+      <p>
+      Once I was complete, however, I had completed something extraordinary. This is a keyboard with a PCB I designed, and it was beautiful! I learned so much about electrical engineering, three years after this project, I would enroll at a university with electrical engineering as my degree. My passion for EE really started here, and this project showed me that any skills I had could be adaptable to the electrical medium. 
+      </p>
+        `
     },
     light: {
       title: "Sound-Activated Arduino Wall Light",
