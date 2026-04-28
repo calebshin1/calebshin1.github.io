@@ -8,21 +8,21 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:        #1e1e1e;
-      --surface:   #2a2a2a;
-      --border:    #3a3a3a;
-      --accent:    #f5c842;
-      --accent2:   #7a5c1a;
-      --text:      #e8eaf0;
-      --muted:     #6b7280;
-      --heading:   #f4f6ff;
+      --bg:        #e8e0d0;
+      --surface:   #d8cfc0;
+      --border:    #b8b0a0;
+      --accent:    #6a8a72;
+      --accent2:   #b85c52;
+      --text:      #2e2a24;
+      --muted:     #7a7060;
+      --heading:   #1e1a16;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
     body.modal-open { overflow: hidden; }
-    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(245,200,66,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(245,200,66,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(30,30,30,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(106,138,114,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(106,138,114,0.06) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(232,224,208,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
     .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--accent); letter-spacing: 0.1em; text-decoration: none; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
@@ -35,7 +35,7 @@
     .hero-bio strong { color: var(--text); font-weight: 500; }
     .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 0.55s forwards; }
     .btn { font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1.75rem; border-radius: 2px; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
-    .btn-primary { background: var(--accent); color: #1e1e1e; border: 1px solid var(--accent); font-weight: 500; }
+    .btn-primary { background: var(--accent); color: #f5f0e8; border: 1px solid var(--accent); font-weight: 500; }
     .btn-primary:hover { background: transparent; color: var(--accent); }
     .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
@@ -68,7 +68,7 @@
     .project-hint { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.08em; }
 
     /* MODAL */
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,10,0.85); backdrop-filter: blur(6px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(30,25,20,0.6); backdrop-filter: blur(6px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .modal-backdrop.open { opacity: 1; pointer-events: all; }
     .modal { background: var(--bg); border: 1px solid var(--border); max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; transform: translateY(24px); transition: transform 0.3s ease; }
     .modal-backdrop.open .modal { transform: translateY(0); }
